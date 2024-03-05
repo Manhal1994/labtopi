@@ -22,7 +22,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route
-            path="labtopi/"
+            path="/labtopi"
             element={
               <>
                 <Appbar />

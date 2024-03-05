@@ -9,10 +9,13 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { ShoppingCart } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
 import { TOGGLE_FAV, TOGGLE_ITEM } from "../Redux/actions";
+import { useNavigate } from "react-router-dom";
 
 function Item({ id, name, image, desc, price }) {
   const dispatch = useDispatch();
   const { cart, favs } = useSelector((state) => state);
+  const navigator = useNavigate();
+
   return (
     <Card className="item-card">
       <CardHeader title={name} subheader="September 14, 2016" />
@@ -35,7 +38,13 @@ function Item({ id, name, image, desc, price }) {
       <CardActions className="item-actions">
         <IconButton
           sx={{ color: favs.includes(id) ? "red" : "grey" }}
-          onClick={() => dispatch({ type: TOGGLE_FAV, id })}
+          onClick={() => {
+            if (localStorage.getItem("name")) {
+              dispatch({ type: TOGGLE_FAV, id });
+            } else {
+              navigator("/labtopi/login");
+            }
+          }}
           aria-label="add to favorites"
         >
           <FavoriteIcon />
@@ -43,7 +52,11 @@ function Item({ id, name, image, desc, price }) {
         <IconButton
           sx={{ color: cart.find((item) => item.id == id) ? "red" : "grey" }}
           onClick={() => {
-            dispatch({ type: TOGGLE_ITEM, id, amount: 1 });
+            if (localStorage.getItem("name")) {
+              dispatch({ type: TOGGLE_ITEM, id, amount: 1 });
+            } else {
+              navigator("/labtopi/login");
+            }
           }}
           aria-label="Add to cart"
         >

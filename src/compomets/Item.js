@@ -16,6 +16,8 @@ function Item({ id, name, image, desc, price }) {
   const { cart, favs } = useSelector((state) => state);
   const navigator = useNavigate();
 
+  console.log("image", image);
+
   return (
     <Card className="item-card">
       <CardHeader title={name} subheader="September 14, 2016" />

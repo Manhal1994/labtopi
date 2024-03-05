@@ -1,38 +1,127 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  height: 50px;
+  display: flex;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  width: 100%;
+  z-index: 1000;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+  border-bottom: 1px solid black;
+  padding: 0px 16px;
+}
+
+.logo {
+  text-align: center;
+  vertical-align: center;
+  line-height: 50px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.actions {
+  line-height: 50px;
+  vertical-align: center;
+}
+
+.landing {
+  position: relative;
+  background-image: url("../public/images/landing.jpg");
+  background-position: right;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+.MuiPaper-root {
+  color: #333 !important;
+}
+
+.content {
+  position: absolute;
+  left: 16px;
   display: flex;
   flex-direction: column;
+  top: 100px;
+}
+
+.slogan {
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 4rem;
+  width: 70%;
+}
+.desc {
+  font-size: 1.5rem;
+  margin-top: 50px;
+  font-weight: 400;
+  width: 50%;
+  font-style: italic;
+  color: #777;
+}
+
+.items {
+  padding: 16px;
+  margin-top: 60px;
+  width: 100%;
+  display: grid;
+  row-gap: 20px;
+  column-gap: 60px;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  grid-template-columns: auto auto auto;
 }
-
-.App-link {
-  color: #61dafb;
+.item-card {
+  border: 0.6px solid black !important;
+  max-width: 345px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.item-card:hover {
+  transform: translate(0px, -10px);
+  transition: all 0.2s;
+}
+.item-media {
+  padding: 1em 1em 0 1em;
+  object-fit: contain !important;
+}
+.item-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+@media screen and (max-width: 760px) {
+  .slogan {
+    font-size: 1.5rem;
   }
-  to {
-    transform: rotate(360deg);
+  .desc {
+    font-size: 1rem;
+  }
+  .landing {
+    background-size: 50% 50%;
+    background-position: right;
+  }
+  .items {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .slogan {
+    font-size: 2rem;
+  }
+  .desc {
+    font-size: 1rem;
+  }
+  .landing {
+    background-size: contain;
+    background-position: center;
+  }
+  .items {
+    grid-template-columns: auto;
   }
 }
